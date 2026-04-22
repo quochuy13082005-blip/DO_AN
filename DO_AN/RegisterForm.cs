@@ -1,5 +1,6 @@
 ﻿using DO_AN;
 using System;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -8,7 +9,7 @@ namespace DO_AN
 {
     public partial class RegisterForm : Form
     {
-        private string excelPath = AppDomain.CurrentDomain.BaseDirectory + "data.xlsx";
+        string excelPath = Path.Combine(Application.StartupPath, @"Data\data.xlsx");
         public RegisterForm()
         {
 

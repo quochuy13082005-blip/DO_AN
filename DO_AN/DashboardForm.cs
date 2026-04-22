@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Windows.Forms;
@@ -14,9 +15,8 @@ namespace DO_AN
         // =========================================================
         // ===== BIẾN THÀNH VIÊN =====
         private Citizen currentUser; 
-        private DataGridView currentGrid; 
-        private string excelPath = Application.StartupPath + @"\data.xlsx";
-
+        private DataGridView currentGrid;
+        string excelPath = Path.Combine(Application.StartupPath, @"Data\data.xlsx");
         // Các TextBox để nhập liệu công dân
         private TextBox txtCitizenID, txtCitizenName, txtCitizenPass, txtCitizenAddress; 
         private TextBox txtCitizenFatherID, txtCitizenMotherID, txtCitizenOccupation, txtCitizenPhone, txtCitizenSpouseID, txtCitizenNationality;

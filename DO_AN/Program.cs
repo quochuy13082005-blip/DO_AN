@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,7 +16,7 @@ namespace DO_AN
         [STAThread]
         static void Main()
         {
-            string excelPath = @"C:\Users\pc\OneDrive\Desktop\Tài liệu\Quốc Huy\DO_AN\DO_AN\bin\Debug\data.xlsx";
+            string excelPath = Path.Combine(Application.StartupPath, @"Data\data.xlsx");
             DataLoader.LoadFromExcel(Tree, excelPath);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
