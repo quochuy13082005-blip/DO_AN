@@ -4,3 +4,5 @@
 *.cache
 bin/
 obj/
+DO_AN/Data/
+*.xlsx
