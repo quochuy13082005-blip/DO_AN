@@ -56,7 +56,7 @@ namespace DO_AN
             Label lblHeaderCard = new Label
             {
                 Text = "CĂN CƯỚC ĐIỆN TỬ",
-                Font = new Font("Times New Roman", 12F, FontStyle.Bold),
+                Font = new Font("Times New Roman", 19F, FontStyle.Bold),
                 ForeColor = Color.Red,
                 AutoSize = false,
                 Width = pnlCard.Width,
@@ -73,11 +73,9 @@ namespace DO_AN
                 Location = new Point(25, 90),
                 SizeMode = PictureBoxSizeMode.Zoom,
                 BackColor = Color.FromArgb(230, 230, 230),
-                BorderStyle = BorderStyle.FixedSingle
+                BorderStyle = BorderStyle.FixedSingle,
+                Image = Properties.Resources.avata_citizen
             };
-
-
-            try { picAvatar.Image = _user.Avatar; } catch { }
             pnlCard.Controls.Add(picAvatar);
 
             float startX = 145;

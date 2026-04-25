@@ -499,28 +499,34 @@ namespace DO_AN
         {
             if (string.IsNullOrEmpty(keyword)) { RefreshGrid(); return; }
 
-            List<Citizen> all = GetAll(Program.Tree.Root);
             List<Citizen> results = new List<Citizen>();
-
-            foreach (Citizen c in all)
+            Citizen exactMatch = Program.Tree.Search(keyword);
+            if (exactMatch != null)
+                results.Add(exactMatch);
+            else
             {
-                if (c.CitizenID.Contains(keyword) || c.FullName.ToLower().Contains(keyword.ToLower()))
+                List<Citizen> all = GetAll(Program.Tree.Root);
+
+                foreach (Citizen c in all)
                 {
-                    results.Add(c);
+                    if (c.CitizenID.Contains(keyword) || c.FullName.ToLower().Contains(keyword.ToLower()))
+                    {
+                        results.Add(c);
+                    }
                 }
-            }
-            currentGrid.DataSource = null; currentGrid.DataSource = results;
+                currentGrid.DataSource = null; currentGrid.DataSource = results;
 
-            if (results.Count == 1)
-            {
-                Citizen c = results[0];
-                txtCitizenID.Text = c.CitizenID; txtCitizenName.Text = c.FullName;
-                txtCitizenPass.Text = c.Password; txtCitizenAddress.Text = c.Address;
-                cbCitizenGender.SelectedItem = c.Gender; txtCitizenOccupation.Text = c.Occupation;
-                txtCitizenFatherID.Text = c.FatherID; txtCitizenMotherID.Text = c.MotherID;
-                txtCitizenPhone.Text = c.PhoneNumber;
-                if (c.DateOfBirth != DateTime.MinValue) dtpCitizenDOB.Value = c.DateOfBirth;
-                txtCitizenSpouseID.Text = c.SpouseID; txtCitizenNationality.Text = c.Nationality;
+                if (results.Count == 1)
+                {
+                    Citizen c = results[0];
+                    txtCitizenID.Text = c.CitizenID; txtCitizenName.Text = c.FullName;
+                    txtCitizenPass.Text = c.Password; txtCitizenAddress.Text = c.Address;
+                    cbCitizenGender.SelectedItem = c.Gender; txtCitizenOccupation.Text = c.Occupation;
+                    txtCitizenFatherID.Text = c.FatherID; txtCitizenMotherID.Text = c.MotherID;
+                    txtCitizenPhone.Text = c.PhoneNumber;
+                    if (c.DateOfBirth != DateTime.MinValue) dtpCitizenDOB.Value = c.DateOfBirth;
+                    txtCitizenSpouseID.Text = c.SpouseID; txtCitizenNationality.Text = c.Nationality;
+                }
             }
         }
         //6. Hàm xóa trắng các TextBox sau khi thêm/sửa/xóa
