@@ -79,7 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AVL.cs" />
-    <Compile Include="BSTNode.cs" />
+    <Compile Include="AVLNode.cs" />
     <Compile Include="CCCD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,7 +108,6 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SecurityHelper.cs" />
     <Compile Include="UIHelper.cs" />
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

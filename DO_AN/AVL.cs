@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Linq;
 
 namespace DO_AN
 {
@@ -8,9 +9,9 @@ namespace DO_AN
         // =========================================================
         // 1. Thành phần dữ liệu và cấu trúc của node       
         // =========================================================
-        private BSTNode root;
+        private AVLNode root; 
 
-        public BSTNode Root
+        public AVLNode Root
         {
             get
             {
@@ -35,7 +36,7 @@ namespace DO_AN
 
         public Citizen Search(string citizenID)
         {
-            BSTNode node = Root;
+            AVLNode node = Root;
 
             while (node != null)
             {
@@ -52,10 +53,10 @@ namespace DO_AN
         // 3. Logic chèn và xóa node (có cân bằng AVL)
         // =========================================================
 
-        private BSTNode InsertRec(BSTNode node, Citizen citizen)
+        private AVLNode InsertRec(AVLNode node, Citizen citizen) 
         {
             if (node == null)
-                return new BSTNode(citizen);
+                return new AVLNode(citizen);
 
             int cmp = string.Compare(citizen.CitizenID, node.Data.CitizenID);
 
@@ -95,7 +96,7 @@ namespace DO_AN
             return node;
         }
 
-        private BSTNode DeleteRec(BSTNode root, string citizenID)
+        private AVLNode DeleteRec(AVLNode root, string citizenID) 
         {
             if (root == null) return null;
 
@@ -121,7 +122,7 @@ namespace DO_AN
                     return root.Left;
 
                 // 3. Có 2 con → lấy node nhỏ nhất bên phải
-                BSTNode minNode = FindMin(root.Right);
+                AVLNode minNode = FindMin(root.Right);
 
                 root.Data = minNode.Data;
 
@@ -165,10 +166,10 @@ namespace DO_AN
         // 4. Hàm hỗ trợ: xoay và tính toán chiều cao, cân bằng
         // =========================================================
 
-        private BSTNode RightRotate(BSTNode y)
+        private AVLNode RightRotate(AVLNode y) 
         {
-            BSTNode x = y.Left;
-            BSTNode t2 = x.Right;
+            AVLNode x = y.Left; 
+            AVLNode t2 = x.Right;
 
             x.Right = y;
             y.Left = t2;
@@ -179,10 +180,10 @@ namespace DO_AN
             return x;
         }
 
-        private BSTNode LeftRotate(BSTNode x)
+        private AVLNode LeftRotate(AVLNode x)
         {
-            BSTNode y = x.Right;
-            BSTNode t2 = y.Left;
+            AVLNode y = x.Right;
+            AVLNode t2 = y.Left;
 
             y.Left = x;
             x.Right = t2;
@@ -192,20 +193,19 @@ namespace DO_AN
 
             return y;
         }
-
-        private int GetHeight(BSTNode node)
+        private int GetHeight(AVLNode node) 
         {
             if (node == null) return 0;
             return node.Height;
         }
 
-        private int GetBalance(BSTNode node)
+        private int GetBalance(AVLNode node) 
         {
             if (node == null) return 0;
             return GetHeight(node.Left) - GetHeight(node.Right);
         }
 
-        private BSTNode FindMin(BSTNode node)
+        private AVLNode FindMin(AVLNode node) 
         {
             while (node.Left != null)
                 node = node.Left;
@@ -223,7 +223,7 @@ namespace DO_AN
             return list;
         }
 
-        private void InOrder(BSTNode node, List<Citizen> list)
+        private void InOrder(AVLNode node, List<Citizen> list)
         {
             if (node == null) return;
 

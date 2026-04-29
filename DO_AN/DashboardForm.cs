@@ -553,14 +553,14 @@ namespace DO_AN
             return true;
         }
         // DUYỆT CÂY ĐỂ LẤY DANH SÁCH CÔNG DÂN HIỆN CÓ TRONG HỆ THỐNG
-        private List<Citizen> GetAll(BSTNode node)
+        private List<Citizen> GetAll(AVLNode node)
         {
             List<Citizen> list = new List<Citizen>();
 
             InOrderTraversal(node, list);
             return list;
         }
-        private void InOrderTraversal(BSTNode node, List<Citizen> list)
+        private void InOrderTraversal(AVLNode node, List<Citizen> list)
         {
             if (node == null) return;
             InOrderTraversal(node.Left, list);
