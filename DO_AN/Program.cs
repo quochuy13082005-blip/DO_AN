@@ -16,7 +16,8 @@ namespace DO_AN
         [STAThread]
         static void Main()
         {
-            string excelPath = Path.Combine(Application.StartupPath, "Data","data.xlsx");
+            string projectRoot = Directory.GetParent(Application.StartupPath).Parent.FullName;
+            string excelPath = Path.Combine(projectRoot, "Data", "data.xlsx");
             DataLoader.LoadFromExcel(Tree, excelPath);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

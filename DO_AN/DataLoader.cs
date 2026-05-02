@@ -3,6 +3,7 @@ using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -88,8 +89,8 @@ namespace DO_AN
                         }
                     }
                 }
-                Console.WriteLine("Nạp dữ liệu từ Excel thành công!");
-                Console.WriteLine("\n=== DANH SÁCH 5 CÔNG DÂN NGẪU NHIÊN VỪA TẠO ===");
+                Debug.WriteLine("Nạp dữ liệu từ Excel thành công!");
+                Debug.WriteLine("\n=== DANH SÁCH 5 CÔNG DÂN NGẪU NHIÊN VỪA TẠO ===");
                 foreach (Citizen citizen in tempSample)
                 {
                     Console.WriteLine("--------------------------------------------------");
@@ -99,7 +100,7 @@ namespace DO_AN
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Lỗi hệ thống khi đọc Excel: " + ex.Message);
+                Debug.WriteLine("Lỗi hệ thống khi đọc Excel: " + ex.Message);
             }
         }       
         private static void CreateFixedAccounts(AVL tree) 
