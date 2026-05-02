@@ -90,13 +90,17 @@ namespace DO_AN
                     }
                 }
                 Debug.WriteLine("Nạp dữ liệu từ Excel thành công!");
-                Debug.WriteLine("\n=== DANH SÁCH 5 CÔNG DÂN NGẪU NHIÊN VỪA TẠO ===");
+                Debug.WriteLine("\n=== DANH SÁCH 5 CÔNG DÂN NGẪU NHIÊN ===");
                 foreach (Citizen citizen in tempSample)
                 {
                     Console.WriteLine("--------------------------------------------------");
                     Console.WriteLine("ID: " + citizen.CitizenID);
-                    Console.WriteLine("Pass: " + citizen.Password);
+                    Console.WriteLine("Pass: " + citizen.Password);   
                 }
+                Console.WriteLine("--------------------------------------------------");
+                Debug.WriteLine("=== TÀI KHOẢN ADMIN ===");
+                Console.WriteLine("ID: admin001 ; PASS: 123");
+
             }
             catch (Exception ex)
             {
