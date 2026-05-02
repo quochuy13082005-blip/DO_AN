@@ -13,12 +13,12 @@ namespace DO_AN
         public RegisterForm()
         {
 
-            InitializeComponent();
+            InitializeComponent(); 
             btnRegister.Click += BtnRegister_Click;
             btnCancel.Click += (s, e) => this.Close();
         }
 
-        private void BtnRegister_Click(object sender, EventArgs e)
+        private void BtnRegister_Click(object sender, EventArgs e) 
         {
             // 1. Kiểm tra các trường bắt buộc
             if (string.IsNullOrWhiteSpace(txtID.Text) || string.IsNullOrWhiteSpace(txtName.Text) ||
@@ -99,7 +99,7 @@ namespace DO_AN
             }
         }
 
-        private bool IsAddressValid(string address, out string detectedProvince)
+        private bool IsAddressValid(string address, out string detectedProvince) 
         {
             detectedProvince = "";
             if (string.IsNullOrWhiteSpace(address)) return false;

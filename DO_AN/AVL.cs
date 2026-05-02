@@ -198,16 +198,16 @@ namespace DO_AN
             if (node == null) return 0;
             return node.Height;
         }
-
+        
         private int GetBalance(AVLNode node) 
         {
             if (node == null) return 0;
             return GetHeight(node.Left) - GetHeight(node.Right);
         }
-
+        
         private AVLNode FindMin(AVLNode node) 
         {
-            while (node.Left != null)
+            while (node.Left != null)  
                 node = node.Left;
 
             return node;

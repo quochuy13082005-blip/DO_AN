@@ -52,8 +52,9 @@ namespace DO_AN
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
-        }
-        private void Dummy(object sender, EventArgs e)
+        } 
+       
+        private void Dummy(object sender, EventArgs e) 
         {
             MessageBox.Show("Chức năng đang phát triển", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -140,20 +141,19 @@ namespace DO_AN
 
             // Các TextBox và DateTimePicker cho nhập liệu
             txtCitizenID = new TextBox() { Location = new Point(120, 35), Width = 150 };
-            txtCitizenPass = new TextBox() { Location = new Point(120, 75), Width = 150 };
-            txtCitizenFatherID = new TextBox() { Location = new Point(120, 115), Width = 150 };
-            dtpCitizenDOB = new DateTimePicker() { Location = new Point(120, 155), Width = 150, Format = DateTimePickerFormat.Short };
+            dtpCitizenDOB = new DateTimePicker() { Location = new Point(120, 75), Width = 150, Format = DateTimePickerFormat.Short };
+            txtCitizenPhone = new TextBox() { Location = new Point(120, 115), Width = 150 };
+            txtCitizenFatherID = new TextBox() { Location = new Point(120, 155), Width = 150 };
 
             txtCitizenName = new TextBox() { Location = new Point(400, 35), Width = 180 };
             txtCitizenAddress = new TextBox() { Location = new Point(400, 75), Width = 180 };
-            txtCitizenMotherID = new TextBox() { Location = new Point(400, 115), Width = 180 };
-            txtCitizenSpouseID = new TextBox() { Location = new Point(400, 155), Width = 180 };
+            txtCitizenOccupation = new TextBox() { Location = new Point(400, 115), Width = 180 };
+            txtCitizenMotherID = new TextBox() { Location = new Point(400, 155), Width = 180 };
 
-            cbCitizenGender = new ComboBox() { Location = new Point(720, 35), Width = 150 };
-            cbCitizenGender.Items.AddRange(new string[] { "Nam", "Nữ" });
-            txtCitizenPhone = new TextBox() { Location = new Point(720, 75), Width = 150 };
-            txtCitizenOccupation = new TextBox() { Location = new Point(720, 115), Width = 150 };
-            txtCitizenNationality = new TextBox() { Location = new Point(720, 155), Width = 150 };
+            cbCitizenGender = new ComboBox() { Location = new Point(720, 35), Width = 150 }; cbCitizenGender.Items.AddRange(new string[] { "Nam", "Nữ" });
+            txtCitizenNationality = new TextBox() { Location = new Point(720, 75), Width = 150 };
+            txtCitizenPass = new TextBox() { Location = new Point(720, 115), Width = 150 };
+            txtCitizenSpouseID = new TextBox() { Location = new Point(720, 155), Width = 150 };
 
             // Thêm nhãn cho từng TextBox
             gbInput.Controls.Add(new Label() { Text = "Số CCCD:", Location = new Point(25, 38), AutoSize = true });
@@ -163,26 +163,26 @@ namespace DO_AN
             gbInput.Controls.Add(new Label() { Text = "Giới tính:", Location = new Point(620, 38), AutoSize = true });
             gbInput.Controls.Add(cbCitizenGender);
 
-            gbInput.Controls.Add(new Label() { Text = "Mật khẩu:", Location = new Point(25, 78), AutoSize = true });
-            gbInput.Controls.Add(txtCitizenPass);
+            gbInput.Controls.Add(new Label() { Text = "Ngày sinh:", Location = new Point(25, 78), AutoSize = true });
+            gbInput.Controls.Add(dtpCitizenDOB);
             gbInput.Controls.Add(new Label() { Text = "Quê quán:", Location = new Point(310, 78), AutoSize = true });
             gbInput.Controls.Add(txtCitizenAddress);
-            gbInput.Controls.Add(new Label() { Text = "SĐT:", Location = new Point(620, 78), AutoSize = true });
-            gbInput.Controls.Add(txtCitizenPhone);
-
-            gbInput.Controls.Add(new Label() { Text = "ID Cha:", Location = new Point(25, 118), AutoSize = true });
-            gbInput.Controls.Add(txtCitizenFatherID);
-            gbInput.Controls.Add(new Label() { Text = "ID Mẹ:", Location = new Point(310, 118), AutoSize = true });
-            gbInput.Controls.Add(txtCitizenMotherID);
-            gbInput.Controls.Add(new Label() { Text = "Nghề nghiệp:", Location = new Point(595, 118), AutoSize = true });
-            gbInput.Controls.Add(txtCitizenOccupation);
-
-            gbInput.Controls.Add(new Label() { Text = "Ngày sinh:", Location = new Point(25, 158), AutoSize = true });
-            gbInput.Controls.Add(dtpCitizenDOB);
-            gbInput.Controls.Add(new Label() { Text = "ID Vợ/Chồng:", Location = new Point(290, 158), AutoSize = true });
-            gbInput.Controls.Add(txtCitizenSpouseID);
-            gbInput.Controls.Add(new Label() { Text = "Quốc tịch:", Location = new Point(610, 158), AutoSize = true });
+            gbInput.Controls.Add(new Label() { Text = "Quốc tịch:", Location = new Point(610, 78), AutoSize = true });
             gbInput.Controls.Add(txtCitizenNationality);
+
+            gbInput.Controls.Add(new Label() { Text = "SĐT:", Location = new Point(25, 118), AutoSize = true });
+            gbInput.Controls.Add(txtCitizenPhone);
+            gbInput.Controls.Add(new Label() { Text = "Nghề nghiệp:", Location = new Point(290, 118), AutoSize = true });
+            gbInput.Controls.Add(txtCitizenOccupation);
+            gbInput.Controls.Add(new Label() { Text = "Mật khẩu:", Location = new Point(620, 118), AutoSize = true });
+            gbInput.Controls.Add(txtCitizenPass);
+
+            gbInput.Controls.Add(new Label() { Text = "ID Cha:", Location = new Point(25, 158), AutoSize = true });
+            gbInput.Controls.Add(txtCitizenFatherID);
+            gbInput.Controls.Add(new Label() { Text = "ID Mẹ:", Location = new Point(310, 158), AutoSize = true });
+            gbInput.Controls.Add(txtCitizenMotherID);
+            gbInput.Controls.Add(new Label() { Text = "ID Vợ/Chồng:", Location = new Point(600, 158), AutoSize = true });
+            gbInput.Controls.Add(txtCitizenSpouseID);
 
             //2. Khu vực tìm kiếm 
             Panel searchPanel = new Panel() { Dock = DockStyle.Top, Height = 50, Padding = new Padding(10, 5, 10, 5) };
@@ -227,6 +227,7 @@ namespace DO_AN
             currentGrid.CellClick += CurrentGrid_CellClick;
 
         }
+        
         private void CurrentGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -891,6 +892,7 @@ namespace DO_AN
                 Font = new Font("Segoe UI", 10, FontStyle.Bold),
                 Cursor = Cursors.Hand
             };
+            
 
             btnUpdate.Click += (se, ev) => {
                 string newPass = txtNew.Text;

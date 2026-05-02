@@ -32,7 +32,7 @@ namespace DO_AN
 
         public static void LoadFromExcel(AVL tree, string filePath)
         {
-            CreateFixedAccounts(tree);
+            CreateFixedAccounts(tree); 
 
             if (!File.Exists(filePath))
             {
@@ -70,7 +70,7 @@ namespace DO_AN
                             c.Gender = worksheet.Cells[row, 4].Value?.ToString(); 
                             c.Address = worksheet.Cells[row, 5].Value?.ToString(); 
 
-                            c.Nationality = worksheet.Cells[row, 6].Value?.ToString(); 
+                            c.Nationality = worksheet.Cells[row, 6].Value?.ToString();
                             c.PhoneNumber = worksheet.Cells[row, 7].Value?.ToString(); 
                             c.Occupation = worksheet.Cells[row, 8].Value?.ToString();  
                             c.Password = worksheet.Cells[row, 9].Value?.ToString(); 
@@ -102,7 +102,7 @@ namespace DO_AN
                 Console.WriteLine("Lỗi hệ thống khi đọc Excel: " + ex.Message);
             }
         }       
-        private static void CreateFixedAccounts(AVL tree)
+        private static void CreateFixedAccounts(AVL tree) 
         {
             // Tài khoản Admin luôn phải có
             tree.Insert(new Citizen
@@ -113,9 +113,9 @@ namespace DO_AN
                 Address = "Hệ thống"
             });
         }
-        public static string RemoveDiacritics(string text)
-        {
-            if (string.IsNullOrEmpty(text)) return text;
+        public static string RemoveDiacritics(string text) 
+        { 
+            if (string.IsNullOrEmpty(text)) return text; 
             string[] vietnameseSigns = new string[]
             {
                 "aAeEoOuUiIdDyY", "áàạảãâấầậẩẫăắằặẳẵ", "ÁÀẠẢÃÂẤẦẬẨẪĂẮẰẶẲẴ",
@@ -129,7 +129,7 @@ namespace DO_AN
             }
             return text;
         }
-        public static void SaveToExcel(AVL tree, string filePath)
+        public static void SaveToExcel(AVL tree, string filePath) 
         {
             try
             {

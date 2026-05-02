@@ -16,9 +16,9 @@ namespace DO_AN
         // =========================================================
 
         //Xử lý nhập liệu
-        public static void SetPlaceholder(TextBox txt, string placeholder, bool isPassword = false)
+        public static void SetPlaceholder(TextBox txt, string placeholder, bool isPassword = false) 
         {
-            txt.ForeColor = Color.Gray;
+            txt.ForeColor = Color.Gray; 
             txt.Text = placeholder;
             if (isPassword)
                 txt.PasswordChar = '\0';
@@ -44,7 +44,7 @@ namespace DO_AN
         }
 
         //Hiệu ứng tương tác
-        public static void AddHoverEffect(Button btn, Color normalColor, Color hoverColor)
+        public static void AddHoverEffect(Button btn, Color normalColor, Color hoverColor) 
         {
             btn.BackColor = normalColor;
             btn.MouseEnter += (s, e) => btn.BackColor = hoverColor;
@@ -184,7 +184,7 @@ namespace DO_AN
         // =========================================================
         // 4. ĐIỀU KHIỂN GIAO DIỆN 
         // =========================================================
-
+        // Thêm nút menu
         public static void AddMenuButton(string text, EventHandler click, Control parent, bool isExit)
         {
             Button btn = new Button
@@ -219,7 +219,7 @@ namespace DO_AN
 
             if (!isExit) btn.BringToFront();
         }
-        public static Panel CreateServiceCard(string title, Image avt, EventHandler clickEvent)
+        public static Panel CreateServiceCard(string title, Image avt, EventHandler clickEvent) 
         {
             Panel card = new Panel { Size = new Size(125, 135), BackColor = Color.White, Margin = new Padding(15), Cursor = Cursors.Hand, Padding = new Padding(10) };
             card.Click += clickEvent;
@@ -234,7 +234,8 @@ namespace DO_AN
             };
 
             PictureBox pic = new PictureBox { Image = avt, Dock = DockStyle.Fill, SizeMode = PictureBoxSizeMode.Zoom, Enabled = false };
-            Label lbl = new Label { Text = title, TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Bottom, Height = 45, Font = new Font("Segoe UI", 8, FontStyle.Bold), ForeColor = Color.FromArgb(64, 64, 64), Enabled = false };
+            Label lbl = new Label { Text = title, TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Bottom, Height = 45, 
+                                   Font = new Font("Segoe UI", 8, FontStyle.Bold), ForeColor = Color.FromArgb(64, 64, 64), Enabled = false };
 
             card.Controls.Add(pic);
             card.Controls.Add(lbl);
