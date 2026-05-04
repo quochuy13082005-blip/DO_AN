@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Windows.Forms;
 
 namespace DO_AN
@@ -399,13 +398,13 @@ namespace DO_AN
             string spouseID = txtCitizenSpouseID.Text.Trim();
             if (!string.IsNullOrEmpty(motherID) && motherID.ToLower() != "null" && motherID.ToLower() != "n/a")
             {
-                if (Program.Tree.Search(motherID) == null)
+                if (Program.Tree.Search(spouseID) == null)
                 {
                     MessageBox.Show("ID Vợ/Chồng không tồn tại! Để trống nếu không rõ.", "Lỗi quan hệ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
-            else { motherID = "N/A"; }
+            else { spouseID = "N/A"; }
 
             Citizen c = new Citizen
             {
@@ -492,7 +491,8 @@ namespace DO_AN
 
                 RefreshGrid();
                 ClearTextBoxes();
-                DataLoader.SaveToExcel(Program.Tree, excelPath); 
+                MessageBox.Show(excelPath);
+                DataLoader.SaveToExcel(Program.Tree, excelPath);
             }
         }
         //5. Tìm kiếm công dân
@@ -533,9 +533,9 @@ namespace DO_AN
         private void ClearTextBoxes()
         {
             txtCitizenID.Clear(); txtCitizenName.Clear(); txtCitizenPass.Clear();
-            txtCitizenAddress.Clear(); cbCitizenGender.Items.Clear(); dtpCitizenDOB.Value = DateTime.Now.AddYears(-18);
+            txtCitizenAddress.Clear(); dtpCitizenDOB.Value = DateTime.Now;
             txtCitizenFatherID.Clear(); txtCitizenMotherID.Clear(); txtCitizenSpouseID.Clear(); txtCitizenNationality.Clear();
-            txtCitizenOccupation.Clear(); txtCitizenPhone.Clear();
+            txtCitizenOccupation.Clear(); txtCitizenPhone.Clear(); 
         }
         //7. Hàm kiểm tra tính hợp lệ của dữ liệu nhập vào trước khi thêm/sửa
         private bool IsInputValid()
