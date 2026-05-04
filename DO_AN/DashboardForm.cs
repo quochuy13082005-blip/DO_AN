@@ -515,8 +515,6 @@ namespace DO_AN
                         results.Add(c);
                     }
                 }
-                currentGrid.DataSource = null; currentGrid.DataSource = results;
-
                 if (results.Count == 1)
                 {
                     Citizen c = results[0];
@@ -529,6 +527,7 @@ namespace DO_AN
                     txtCitizenSpouseID.Text = c.SpouseID; txtCitizenNationality.Text = c.Nationality;
                 }
             }
+            currentGrid.DataSource = null; currentGrid.DataSource = results;
         }
         //6. Hàm xóa trắng các TextBox sau khi thêm/sửa/xóa
         private void ClearTextBoxes()
