@@ -7,27 +7,75 @@ using System.IO;
 
 namespace DO_AN
 {
+    public class MyDictionary<TKey, TValue>
+    {
+        private class Entry
+        {
+            public TKey Key;
+            public TValue Value;
+            public Entry Next;
+        }
+        private Entry[] _buckets;
+        private int _size;
+        public MyDictionary(int size = 100)
+        {
+            _size = size;
+            _buckets = new Entry[_size];
+        }
+        private int GetHash(TKey key)
+        {
+            return Math.Abs(key.GetHashCode()) % _size;
+        }
+        public void Add(TKey key, TValue value)
+        {
+            int index = GetHash(key);
+            Entry newEntry = new Entry { Key = key, Value = value, Next = _buckets[index] };
+            _buckets[index] = newEntry;
+        }
+        public bool TryGetValue(TKey key, out TValue value)
+        {
+            int index = GetHash(key);
+            Entry current = _buckets[index];
+            while (current != null)
+            {
+                if (current.Key.Equals(key))
+                {
+                    value = current.Value;
+                    return true;
+                }
+                current = current.Next;
+            }
+            value = default;
+            return false;
+        }
+    }
     public class DataLoader
     {
-        public static Dictionary<string, string> provinceMap = new Dictionary<string, string>()
+        public static MyDictionary<string, string> provinceMap = new MyDictionary<string, string>();
+        static DataLoader()
         {
-            {"001","Hà Nội"},{"002","Hà Giang"},{"004","Cao Bằng"},{"006","Bắc Kạn"},
-            {"008","Tuyên Quang"},{"010","Lào Cai"},{"011","Điện Biên"},{"012","Lai Châu"},
-            {"014","Sơn La"},{"015","Yên Bái"},{"017","Hòa Bình"},{"019","Thái Nguyên"},
-            {"020","Lạng Sơn"},{"022","Quảng Ninh"},{"024","Bắc Giang"},{"025","Phú Thọ"},
-            {"026","Vĩnh Phúc"},{"027","Bắc Ninh"},{"030","Hải Dương"},{"031","Hải Phòng"},
-            {"033","Hưng Yên"},{"034","Thái Bình"},{"035","Hà Nam"},{"036","Nam Định"},
-            {"037","Ninh Bình"},{"038","Thanh Hóa"},{"040","Nghệ An"},{"042","Hà Tĩnh"},
-            {"044","Quảng Bình"},{"045","Quảng Trị"},{"046","Thừa Thiên Huế"},{"048","Đà Nẵng"},
-            {"049","Quảng Nam"},{"051","Quảng Ngãi"},{"052","Bình Định"},{"054","Phú Yên"},
-            {"056","Khánh Hòa"},{"058","Ninh Thuận"},{"060","Bình Thuận"},{"062","Kon Tum"},
-            {"064","Gia Lai"},{"066","Đắk Lắk"},{"067","Đắk Nông"},{"068","Lâm Đồng"},
-            {"070","Bình Phước"},{"072","Tây Ninh"},{"074","Bình Dương"},{"075","Đồng Nai"},
-            {"077","Bà Rịa - Vũng Tàu"},{"079","TP.HCM"},{"080","Long An"},{"082","Tiền Giang"},
-            {"083","Bến Tre"},{"084","Trà Vinh"},{"086","Vĩnh Long"},{"087","Đồng Tháp"},
-            {"089","An Giang"},{"091","Kiên Giang"},{"092","Cần Thơ"},{"093","Hậu Giang"},
-            {"094","Sóc Trăng"},{"095","Bạc Liêu"},{"096","Cà Mau"}
-        };
+            provinceMap.Add("001", "Hà Nội");provinceMap.Add("002", "Hà Giang");provinceMap.Add("004", "Cao Bằng");
+            provinceMap.Add("006", "Bắc Kạn");provinceMap.Add("008", "Tuyên Quang");provinceMap.Add("010", "Lào Cai");
+            provinceMap.Add("011", "Điện Biên");provinceMap.Add("012", "Lai Châu");provinceMap.Add("014", "Sơn La");
+            provinceMap.Add("015", "Yên Bái");provinceMap.Add("017", "Hòa Bình");provinceMap.Add("019", "Thái Nguyên");
+            provinceMap.Add("020", "Lạng Sơn");provinceMap.Add("022", "Quảng Ninh");provinceMap.Add("024", "Bắc Giang");
+            provinceMap.Add("025", "Phú Thọ");provinceMap.Add("026", "Vĩnh Phúc");provinceMap.Add("027", "Bắc Ninh");
+            provinceMap.Add("030", "Hải Dương");provinceMap.Add("031", "Hải Phòng");provinceMap.Add("033", "Hưng Yên");
+            provinceMap.Add("034", "Thái Bình");provinceMap.Add("035", "Hà Nam");provinceMap.Add("036", "Nam Định");
+            provinceMap.Add("037", "Ninh Bình");provinceMap.Add("038", "Thanh Hóa");provinceMap.Add("040", "Nghệ An");
+            provinceMap.Add("042", "Hà Tĩnh");provinceMap.Add("044", "Quảng Bình");provinceMap.Add("045", "Quảng Trị");
+            provinceMap.Add("046", "Thừa Thiên Huế");provinceMap.Add("048", "Đà Nẵng");provinceMap.Add("049", "Quảng Nam");
+            provinceMap.Add("051", "Quảng Ngãi");provinceMap.Add("052", "Bình Định");provinceMap.Add("054", "Phú Yên");
+            provinceMap.Add("056", "Khánh Hòa");provinceMap.Add("058", "Ninh Thuận");provinceMap.Add("060", "Bình Thuận");
+            provinceMap.Add("062", "Kon Tum");provinceMap.Add("064", "Gia Lai");provinceMap.Add("066", "Đắk Lắk");
+            provinceMap.Add("067", "Đắk Nông");provinceMap.Add("068", "Lâm Đồng");provinceMap.Add("070", "Bình Phước");
+            provinceMap.Add("072", "Tây Ninh");provinceMap.Add("074", "Bình Dương");provinceMap.Add("075", "Đồng Nai");
+            provinceMap.Add("077", "Bà Rịa - Vũng Tàu");provinceMap.Add("079", "TP.HCM");provinceMap.Add("080", "Long An");
+            provinceMap.Add("082", "Tiền Giang");provinceMap.Add("083", "Bến Tre");provinceMap.Add("084", "Trà Vinh");
+            provinceMap.Add("086", "Vĩnh Long");provinceMap.Add("087", "Đồng Tháp");provinceMap.Add("089", "An Giang");
+            provinceMap.Add("091", "Kiên Giang");provinceMap.Add("092", "Cần Thơ");provinceMap.Add("093", "Hậu Giang");
+            provinceMap.Add("094", "Sóc Trăng");provinceMap.Add("095", "Bạc Liêu");provinceMap.Add("096", "Cà Mau");
+        }
 
         public static void LoadFromExcel(AVL tree, string filePath)
         {
@@ -155,11 +203,12 @@ namespace DO_AN
                         worksheet.Cells[1, i + 1].Style.Font.Bold = true; 
                     }
 
-                    List<Citizen> list = tree.GetAllCitizens();
+                    MyList<Citizen> list = tree.GetAllCitizens();
 
                     int row = 2;
-                    foreach (Citizen c in list)
+                    for (int i = 0; i < list.Count; i++)
                     {
+                        Citizen c = list[i];
                         if (c.CitizenID.ToLower().StartsWith("admin")) continue;
 
                         worksheet.Cells[row, 1].Value = c.CitizenID;

@@ -215,14 +215,14 @@ namespace DO_AN
         // 5. Hàm xuất dữ liệu: Duyệt cây lấy danh sách công dân
         // =========================================================
 
-        public List<Citizen> GetAllCitizens()
+        public MyList<Citizen> GetAllCitizens()
         {
-            List<Citizen> list = new List<Citizen>();
+            MyList<Citizen> list = new MyList<Citizen>();
             InOrder(root, list);
             return list;
         }
 
-        private void InOrder(AVLNode node, List<Citizen> list)
+        private void InOrder(AVLNode node,  MyList<Citizen> list)
         {
             if (node == null) return;
 
